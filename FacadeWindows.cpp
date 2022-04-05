@@ -4,7 +4,8 @@ FacadeWindows::FacadeWindows(QWidget *parent) : QMainWindow(parent)
 {
     pEnterWin = new EnterWindow(this);
     pLogicWin = new LoginWindow(this);
-
+    pRegistrWin = new RegistrationWindow(this);
+    pUserWin = new UserWindow(this);
 
     pEnterWin->show();
 
@@ -12,9 +13,12 @@ FacadeWindows::FacadeWindows(QWidget *parent) : QMainWindow(parent)
     connect(pEnterWin,SIGNAL(Registr()),this,SLOT(Registr()));
 
     connect(pLogicWin,SIGNAL(Back()),this,SLOT(Back()));
+    connect(pLogicWin,SIGNAL(Enter()),this,SLOT(Enter()));
+
+    connect(pRegistrWin,SIGNAL(Back()),this,SLOT(Back()));
+    connect(pUserWin,SIGNAL(Back()),this,SLOT(Back()));
 
 
-    connect(&registrWin,SIGNAL(Back()),this,SLOT(Back()));
 }
 
 
@@ -27,18 +31,30 @@ void FacadeWindows::Login()
 void FacadeWindows::Registr()
 {
     pEnterWin->hide();
-    registrWin.show();
+    pRegistrWin->show();
 }
 
 void FacadeWindows::Back()
 {
+    pUserWin->hide();
     pLogicWin->hide();
-    registrWin.hide();
+    pRegistrWin->hide();
     pEnterWin->show();
+}
+
+void FacadeWindows::Enter()
+{
+    qDebug()<< "ENTER";
+    pLogicWin->hide();
+    pRegistrWin->hide();
+    pEnterWin->hide();
+    pUserWin->show();
 }
 
 FacadeWindows::~FacadeWindows()
 {
     delete pEnterWin;
     delete pLogicWin;
+    delete pRegistrWin;
+    delete pUserWin;
 }

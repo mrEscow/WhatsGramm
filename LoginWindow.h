@@ -18,11 +18,11 @@ public:
     ~LoginWindow();
 signals:
     void Back();
+    void Enter();
 
 private slots:
     void on_EnterButton_clicked();
     void on_BackButton_clicked();
-//public slots:
     void adjustTextColor(const QString&);
 
 private:

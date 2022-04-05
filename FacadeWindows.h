@@ -6,6 +6,7 @@
 #include "EnterWindow.h"
 #include "LoginWindow.h"
 #include "RegistrationWindow.h"
+#include "UserWindow.h"
 
 class FacadeWindows : public QMainWindow
 {
@@ -16,13 +17,15 @@ public:
 private:
 
     EnterWindow *pEnterWin;
-    LoginWindow * pLogicWin;
-    RegistrationWindow registrWin;
+    LoginWindow *pLogicWin;
+    RegistrationWindow *pRegistrWin;
+    UserWindow *pUserWin;
 
 private slots:
     void Login();
     void Registr();
     void Back();
+    void Enter();
 };
 
 #endif // FACADEWINDOWS_H

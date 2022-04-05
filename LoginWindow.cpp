@@ -28,6 +28,13 @@ void LoginWindow::on_EnterButton_clicked()
 {
     if(ui->lineEdit_Login->hasAcceptableInput()){
         qDebug()<< "Login Valid on_EnterButton_clicked";
+        if(ui->lineEdit_Login->text() == "escow@mail.ru"){
+            qDebug()<< ui->lineEdit_Login->displayText();
+            if(ui->lineEdit_Password->text() == "123456"){
+                qDebug()<< ui->lineEdit_Password->text();
+                emit Enter();
+            }
+        }
     }
     else{
         qDebug()<< "not Valid!!!";
@@ -44,15 +51,9 @@ void LoginWindow::on_BackButton_clicked()
 
 void LoginWindow::adjustTextColor(const QString&)
 {
-
-    if(!ui->lineEdit_Login->hasAcceptableInput()){
-        //qDebug()<< "QLineEdit { color: red;}";
-        ui->lineEdit_Login->setStyleSheet("QLineEdit { color: red;}");
-    }
-    else{
-        qDebug()<< "Login Valid";
-        //qDebug()<< "QLineEdit { color: black;}";
-        ui->lineEdit_Login->setStyleSheet("QLineEdit { color: black;}");
-    }
+    if(!ui->lineEdit_Login->hasAcceptableInput())
+        ui->lineEdit_Login->setStyleSheet("QLineEdit { color: red;}");   
+    else
+        ui->lineEdit_Login->setStyleSheet("QLineEdit { color: black;}");   
 }
 
