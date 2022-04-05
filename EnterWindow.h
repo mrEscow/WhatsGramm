@@ -13,10 +13,10 @@ class EnterWindow : public QMainWindow
 public:
     EnterWindow(QWidget *parent = nullptr);
     ~EnterWindow();
-private slots:
-    void on_pushButton_2_clicked();
 
-    void on_pushButton_clicked();
+private slots:
+    void on_LoginButton_clicked();
+    void on_RegistrationButton_clicked();
 
 private:
      Ui::EnterWindow *ui;

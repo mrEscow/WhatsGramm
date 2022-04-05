@@ -1,31 +1,44 @@
 #include "FacadeWindows.h"
 
-FacadeWindows::FacadeWindows()
+FacadeWindows::FacadeWindows(QWidget *parent) : QMainWindow(parent)
 {
-    enterWin.show();
+    pEnterWin = new EnterWindow(this);
+    pLogicWin = new LoginWindow(this);
 
-    connect(&enterWin,SIGNAL(Login()),this,SLOT(Login()));
-    connect(&enterWin,SIGNAL(Registr()),this,SLOT(Registr()));
 
-    connect(&logicWin,SIGNAL(Back()),this,SLOT(Back()));
+    pEnterWin->show();
+
+    connect(pEnterWin,SIGNAL(Login()),this,SLOT(Login()));
+    connect(pEnterWin,SIGNAL(Registr()),this,SLOT(Registr()));
+
+    connect(pLogicWin,SIGNAL(Back()),this,SLOT(Back()));
+
+
     connect(&registrWin,SIGNAL(Back()),this,SLOT(Back()));
 }
 
+
 void FacadeWindows::Login()
 {
-    enterWin.hide();
-    logicWin.show();
+    pEnterWin->hide();
+    pLogicWin->show();
 }
 
 void FacadeWindows::Registr()
 {
-    enterWin.hide();
+    pEnterWin->hide();
     registrWin.show();
 }
 
 void FacadeWindows::Back()
 {
-    logicWin.hide();
+    pLogicWin->hide();
     registrWin.hide();
-    enterWin.show();
+    pEnterWin->show();
+}
+
+FacadeWindows::~FacadeWindows()
+{
+    delete pEnterWin;
+    delete pLogicWin;
 }

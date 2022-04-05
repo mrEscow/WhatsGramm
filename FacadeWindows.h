@@ -7,15 +7,16 @@
 #include "LoginWindow.h"
 #include "RegistrationWindow.h"
 
-class FacadeWindows : public QObject
+class FacadeWindows : public QMainWindow
 {
     Q_OBJECT
 public:
-    FacadeWindows();
+    FacadeWindows(QWidget *parent = nullptr);
+    ~FacadeWindows();
 private:
 
-    EnterWindow enterWin;
-    LoginWindow logicWin;
+    EnterWindow *pEnterWin;
+    LoginWindow * pLogicWin;
     RegistrationWindow registrWin;
 
 private slots:

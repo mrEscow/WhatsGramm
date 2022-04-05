@@ -13,13 +13,14 @@ EnterWindow::~EnterWindow()
     delete ui;
 }
 
-void EnterWindow::on_pushButton_2_clicked()
+
+void EnterWindow::on_LoginButton_clicked()
 {
     emit Login();
 }
 
 
-void EnterWindow::on_pushButton_clicked()
+void EnterWindow::on_RegistrationButton_clicked()
 {
     emit Registr();
 }
